@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,57 +13,57 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         /* Шапка */
         header {
             background: linear-gradient(135deg, #2c3e50, #4a6491);
             color: white;
             padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: bold;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
         }
-        
+
         nav ul li {
             margin-left: 20px;
         }
-        
+
         nav ul li a {
             color: white;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         nav ul li a:hover {
             color: #3498db;
         }
-        
+
         /* Герой-секция */
         .hero {
             background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
@@ -72,18 +73,18 @@
             text-align: center;
             padding: 100px 0;
         }
-        
+
         .hero h1 {
             font-size: 48px;
             margin-bottom: 20px;
         }
-        
+
         .hero p {
             font-size: 20px;
             max-width: 700px;
             margin: 0 auto 30px;
         }
-        
+
         .btn {
             display: inline-block;
             background-color: #3498db;
@@ -94,45 +95,58 @@
             font-weight: bold;
             transition: background-color 0.3s;
         }
-        
+
         .btn:hover {
             background-color: #2980b9;
         }
-        
+
+        .btn-details {
+            background-color: #2ecc71;
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        .btn-details:hover {
+            background-color: #27ae60;
+        }
+
         /* Секции */
         section {
             padding: 80px 0;
         }
-        
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
             font-size: 36px;
             color: #2c3e50;
         }
-        
+
         /* Карточки курсов */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .course-card {
             background-color: white;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
-        
+
         .course-card:hover {
             transform: translateY(-10px);
         }
-        
+
         .course-img {
             height: 180px;
-            background-color: #3498db;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -140,22 +154,26 @@
             font-size: 24px;
             font-weight: bold;
         }
-        
+
         .course-content {
             padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
-        
+
         .course-title {
             font-size: 20px;
             margin-bottom: 10px;
             color: #2c3e50;
         }
-        
+
         .course-description {
             color: #7f8c8d;
             margin-bottom: 15px;
+            flex-grow: 1;
         }
-        
+
         .course-meta {
             display: flex;
             justify-content: space-between;
@@ -163,60 +181,35 @@
             font-size: 14px;
             color: #7f8c8d;
         }
-        
-        /* Карточки преподавателей */
-        .teachers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
+
+        /* Секция о нас */
+        .about-section {
+            background-color: #ecf0f1;
         }
-        
-        .teacher-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            padding: 20px;
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
         }
-        
-        .teacher-photo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: #bdc3c7;
-            margin: 0 auto 15px;
+
+        .about-text {
+            flex: 2;
+        }
+
+        .about-image {
+            flex: 1;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            height: 300px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 40px;
-            overflow: hidden;
-        }
-        
-        .teacher-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .teacher-name {
             font-size: 20px;
-            margin-bottom: 5px;
-            color: #2c3e50;
-        }
-        
-        .teacher-subject {
-            color: #3498db;
-            margin-bottom: 10px;
             font-weight: bold;
         }
-        
-        .teacher-experience {
-            color: #7f8c8d;
-            margin-bottom: 15px;
-        }
-        
+
         /* Футер */
         footer {
             background-color: #2c3e50;
@@ -224,71 +217,80 @@
             padding: 40px 0;
             text-align: center;
         }
-        
+
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
         }
-        
+
         .footer-section {
             flex: 1;
             min-width: 250px;
             margin-bottom: 20px;
         }
-        
+
         .footer-section h3 {
             margin-bottom: 15px;
             font-size: 18px;
         }
-        
+
         .footer-section ul {
             list-style: none;
         }
-        
+
         .footer-section ul li {
             margin-bottom: 10px;
         }
-        
+
         .footer-section ul li a {
             color: #bdc3c7;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         .footer-section ul li a:hover {
             color: white;
         }
-        
+
         .copyright {
             margin-top: 30px;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #bdc3c7;
         }
-        
+
         /* Адаптивность */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             nav ul {
                 margin-top: 15px;
                 justify-content: center;
             }
-            
+
             .hero h1 {
                 font-size: 36px;
             }
-            
+
             .hero p {
                 font-size: 18px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-image {
+                width: 100%;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Шапка -->
     <header>
@@ -298,7 +300,6 @@
                 <nav>
                     <ul>
                         <li><a href="#courses">Курсы</a></li>
-                        <li><a href="#teachers">Преподаватели</a></li>
                         <li><a href="#about">О нас</a></li>
                         <li><a href="#contact">Контакты</a></li>
                     </ul>
@@ -324,15 +325,17 @@
                 {% for course in courses %}
                 <!-- Курс -->
                 <div class="course-card">
-                    <div class="course-img" style="background-color: {{ course.color }};">{{ course.language }}</div>
+                    <div class="course-img">
+                        {{ course.name|slice:":2"|upper }}
+                    </div>
                     <div class="course-content">
-                        <h3 class="course-title">{{ course.title }}</h3>
-                        <p class="course-description">{{ course.description }}</p>
+                        <h3 class="course-title">{{ course.name }}</h3>
+                        <p class="course-description">{{ course.Description|truncatechars:150 }}</p>
                         <div class="course-meta">
-                            <span>Длительность: {{ course.duration }} мес.</span>
-                            <span>Уровень: {{ course.get_level_display }}</span>
+                            <span>Групп: {{ course.group.count }}</span>
+                            <span>Преподавателей: {{ course.teachers.all.count }}</span>
                         </div>
-                        <a href="{% url 'course_detail' course.id %}" class="btn">Подробнее</a>
+                        <a href="{% url 'course_detail' course.id %}" class="btn btn-details">Подробнее о курсе</a>
                     </div>
                 </div>
                 {% empty %}
@@ -342,29 +345,20 @@
         </div>
     </section>
 
-    <!-- Секция преподавателей -->
-    <section id="teachers" style="background-color: #ecf0f1;">
+    <!-- Секция о нас -->
+    <section id="about" class="about-section">
         <div class="container">
-            <h2 class="section-title">Наши преподаватели</h2>
-            <div class="teachers-grid">
-                {% for teacher in teachers %}
-                <!-- Преподаватель -->
-                <div class="teacher-card">
-                    <div class="teacher-photo">
-                        {% if teacher.photo %}
-                            <img src="{{ teacher.photo.url }}" alt="{{ teacher.full_name }}">
-                        {% else %}
-                            {{ teacher.initials }}
-                        {% endif %}
-                    </div>
-                    <h3 class="teacher-name">{{ teacher.full_name }}</h3>
-                    <p class="teacher-subject">{{ teacher.specialization }}</p>
-                    <p class="teacher-experience">Опыт работы: {{ teacher.experience }} лет</p>
-                    <p>{{ teacher.bio }}</p>
+            <h2 class="section-title">О нас</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>CodeMaster - Школа программирования</h3>
+                    <p>Мы - современная образовательная платформа, специализирующаяся на обучении программированию. Наша миссия - сделать IT-образование доступным для каждого.</p>
+                    <p>С 2020 года мы обучили более 1000 студентов, многие из которых успешно работают в ведущих IT-компаниях страны.</p>
+                    <p>Наши курсы разработаны практикующими специалистами и постоянно обновляются в соответствии с требованиями рынка.</p>
                 </div>
-                {% empty %}
-                <p>Преподаватели пока не добавлены.</p>
-                {% endfor %}
+                <div class="about-image">
+                    CodeMaster
+                </div>
             </div>
         </div>
     </section>
@@ -391,7 +385,6 @@
                     <h3>Быстрые ссылки</h3>
                     <ul>
                         <li><a href="#courses">Курсы</a></li>
-                        <li><a href="#teachers">Преподаватели</a></li>
                         <li><a href="#about">О нас</a></li>
                         <li><a href="#contact">Контакты</a></li>
                     </ul>
