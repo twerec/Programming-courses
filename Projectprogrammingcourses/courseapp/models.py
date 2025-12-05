@@ -70,8 +70,10 @@ class Courses(models.Model):
     name = models.CharField("Название", max_length=100, unique=True)
     group = models.ManyToManyField(Group)
     teachers = models.ManyToManyField(Teachers)
-    Description = models.CharField("Описание", max_length=1000)
-    Detailed_description = models.CharField("Подробное описание", max_length=1000)
+    Description = models.TextField("Описание")
+    Detailed_description = models.TextField("Подробное описание")
+    def __str__(self):
+        return f"{self.name}"
     class Meta:
         verbose_name = "Курс"
         verbose_name_plural = "Курсы"

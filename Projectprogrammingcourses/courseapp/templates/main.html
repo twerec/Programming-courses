@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Курсы программирования</title>
     <style>
-        /* Общие стили */
         * {
             margin: 0;
             padding: 0;
@@ -26,7 +25,6 @@
             padding: 0 20px;
         }
 
-        /* Шапка */
         header {
             background: linear-gradient(135deg, #2c3e50, #4a6491);
             color: white;
@@ -64,7 +62,6 @@
             color: #3498db;
         }
 
-        /* Герой-секция */
         .hero {
             background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
@@ -110,7 +107,6 @@
             background-color: #27ae60;
         }
 
-        /* Секции */
         section {
             padding: 80px 0;
         }
@@ -122,7 +118,6 @@
             color: #2c3e50;
         }
 
-        /* Карточки курсов */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -182,7 +177,6 @@
             color: #7f8c8d;
         }
 
-        /* Секция о нас */
         .about-section {
             background-color: #ecf0f1;
         }
@@ -210,57 +204,67 @@
             font-weight: bold;
         }
 
-        /* Футер */
-        footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 40px 0;
-            text-align: center;
-        }
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 40px 0;
+    width: 100%;
+}
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    text-align: left;
+}
 
-        .footer-section {
-            flex: 1;
-            min-width: 250px;
-            margin-bottom: 20px;
-        }
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
 
-        .footer-section h3 {
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: white;
+}
 
-        .footer-section ul {
-            list-style: none;
-        }
+.footer-section ul {
+    list-style: none;
+    padding-left: 0;
+}
 
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
+.footer-section ul li {
+    margin-bottom: 10px;
+}
 
-        .footer-section ul li a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
+.footer-section ul li a {
+    color: #bdc3c7;
+    text-decoration: none;
+    transition: color 0.3s;
+    display: block;
+}
 
-        .footer-section ul li a:hover {
-            color: white;
-        }
+.footer-section ul li a:hover {
+    color: white;
+}
 
-        .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #bdc3c7;
-        }
+.footer-section address {
+    font-style: normal;
+    line-height: 1.6;
+}
 
-        /* Адаптивность */
+.copyright {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: #bdc3c7;
+    text-align: center;
+    width: 100%;
+}
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -292,11 +296,93 @@
 </head>
 
 <body>
-    <!-- Шапка -->
+
     <header>
+        <div class="container header-content">
+            <h1 class="logo">CodeSU</h1>
+            <nav>
+                <ul>
+                    <li><a href="#courses">Курсы</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="hero">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">CodeMaster</div>
+            <h1>Курсы программирования для всех уровней</h1>
+            <p>Освойте востребованные языки программирования под руководством опытных преподавателей. Начните свой путь в IT уже сегодня!</p>
+            <a href="#courses" class="btn">Выбрать курс</a>
+        </div>
+    </section>
+
+
+    <section id="courses" class="container">
+        <h2 class="section-title">Наши курсы</h2>
+        <div class="courses-grid">
+            {% for course in courses %}
+            <article class="course-card">
+                <div class="course-img">
+                    {{ course.name }}
+                </div>
+                <div class="course-content">
+                    <h3 class="course-title">{{ course.name }}</h3>
+                    <p class="course-description">{{ course.Description }}</p>
+                    <div class="course-meta">
+                        <span>Групп: {{ course.group.count }}</span>
+                        <span>Преподавателей: {{ course.teachers.all.count }}</span>
+                    </div>
+                    <a href="{% url 'course_detail' course.id %}" class="btn btn-details">Подробнее о курсе</a>
+                </div>
+            </article>
+            {% empty %}
+            <p>Курсы пока не добавлены.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">О нас</h2>
+            <div class="about-content">
+                <article class="about-text">
+                    <h3>CodeSU - Школа программирования</h3>
+                    <p>Мы - современная образовательная платформа, специализирующаяся на обучении программированию. Наша миссия - сделать IT-образование доступным для каждого.</p>
+                    <p>С 2020 года мы обучили более 1000 студентов, многие из которых успешно работают в ведущих IT-компаниях страны.</p>
+                    <p>Наши курсы разработаны практикующими специалистами и постоянно обновляются в соответствии с требованиями рынка.</p>
+                    <p>Мы не продаём записи прошлогодних лекций. Наша учебная программа — живой организм, который ежеквартально пересматривается и обновляется в соответствии с последними трендами рынка. То, что вы изучаете сегодня, будет востребовано завтра.</p>
+                </article>
+                <figure class="about-image">
+                    CodeSU
+                </figure>
+            </div>
+        </div>
+    </section>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>CodeSU</h3>
+                <p>Образовательный центр программирования. Мы помогаем людям освоить IT-профессии с нуля.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <address>
+                    <ul>
+                        <li>г. Сургут, ул. 30 Лет победы</li>
+                        <li>+7 (922) 777-77-77</li>
+                        <li>CodeSU@rambler.ru</li>
+                    </ul>
+                </address>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Быстрые ссылки</h3>
                 <nav>
                     <ul>
                         <li><a href="#courses">Курсы</a></li>
@@ -306,94 +392,10 @@
                 </nav>
             </div>
         </div>
-    </header>
-
-    <!-- Герой-секция -->
-    <section class="hero">
-        <div class="container">
-            <h1>Курсы программирования для всех уровней</h1>
-            <p>Освойте востребованные языки программирования под руководством опытных преподавателей. Начните свой путь в IT уже сегодня!</p>
-            <a href="#courses" class="btn">Выбрать курс</a>
+        <div class="copyright">
+            &copy; 2025 CodeSU. Все права защищены.
         </div>
-    </section>
-
-    <!-- Секция курсов -->
-    <section id="courses">
-        <div class="container">
-            <h2 class="section-title">Наши курсы</h2>
-            <div class="courses-grid">
-                {% for course in courses %}
-                <!-- Курс -->
-                <div class="course-card">
-                    <div class="course-img">
-                        {{ course.name|slice:":2"|upper }}
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">{{ course.name }}</h3>
-                        <p class="course-description">{{ course.Description|truncatechars:150 }}</p>
-                        <div class="course-meta">
-                            <span>Групп: {{ course.group.count }}</span>
-                            <span>Преподавателей: {{ course.teachers.all.count }}</span>
-                        </div>
-                        <a href="{% url 'course_detail' course.id %}" class="btn btn-details">Подробнее о курсе</a>
-                    </div>
-                </div>
-                {% empty %}
-                <p>Курсы пока не добавлены.</p>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- Секция о нас -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title">О нас</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>CodeMaster - Школа программирования</h3>
-                    <p>Мы - современная образовательная платформа, специализирующаяся на обучении программированию. Наша миссия - сделать IT-образование доступным для каждого.</p>
-                    <p>С 2020 года мы обучили более 1000 студентов, многие из которых успешно работают в ведущих IT-компаниях страны.</p>
-                    <p>Наши курсы разработаны практикующими специалистами и постоянно обновляются в соответствии с требованиями рынка.</p>
-                </div>
-                <div class="about-image">
-                    CodeMaster
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Футер -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>CodeMaster</h3>
-                    <p>Образовательный центр программирования. Мы помогаем людям освоить IT-профессии с нуля.</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Контакты</h3>
-                    <ul>
-                        <li>г. Москва, ул. Программистов, 15</li>
-                        <li>+7 (495) 123-45-67</li>
-                        <li>info@codemaster.ru</li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Быстрые ссылки</h3>
-                    <ul>
-                        <li><a href="#courses">Курсы</a></li>
-                        <li><a href="#about">О нас</a></li>
-                        <li><a href="#contact">Контакты</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2023 CodeMaster. Все права защищены.
-            </div>
-        </div>
-    </footer>
+    </div>
+</footer>
 </body>
 </html>

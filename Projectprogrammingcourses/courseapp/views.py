@@ -3,7 +3,7 @@ from .models import Courses
 
 def home(request):
     courses = Courses.objects.all()
-    return render(request, 'index.html', {'courses': courses})
+    return render(request, 'main.html', {'courses': courses})
 
 def course_detail(request, course_id):
     course = get_object_or_404(Courses, id=course_id)
